@@ -1,0 +1,16 @@
+<launch>
+
+    <arg name="project" default="lio_sam"/>
+    
+    <!-- Parameters -->
+    <rosparam file="$(find lio_sam)/config/params.yaml" command="load" />
+
+    <!--- LOAM -->
+    <include file="$(find lio_sam)/launch/include/module_loam.launch" />
+
+    <!--- Run Rviz-->
+    <include file="$(find lio_sam)/launch/include/module_rviz.launch" />
+
+    <node pkg="$(arg project)" type="rs_to_velodyne" name="rs_to_velodyne" args="XYZIRT" output="screen"/>
+    <node pkg="lidar_localization" type="odom2txt_node" name="odom2txt_node" output="screen" />
+</launch>
