@@ -73,6 +73,7 @@ int main(int argc, char** argv)
     std::string dirpath(abs_path);
     dirpath = dirpath.substr(0, dirpath.find_last_of("/"));
     dirpath = dirpath.substr(0, dirpath.find_last_of("/"));
+    dirpath = dirpath.substr(0, dirpath.find_last_of("/"));
 
     string GT_file = dirpath + "/slam_data/Ground_Truth.txt";
     string LIEO_file = dirpath + "/slam_data/ESKF(ours).txt";
